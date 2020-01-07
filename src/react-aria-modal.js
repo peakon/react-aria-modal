@@ -15,14 +15,6 @@ class Modal extends React.Component {
     scrollDisabled: true
   };
 
-  componentWillMount() {
-    if (!this.props.titleText && !this.props.titleId) {
-      throw new Error(
-        'react-aria-modal instances should have a `titleText` or `titleId`'
-      );
-    }
-  }
-
   componentDidMount() {
     if (this.props.onEnter) {
       this.props.onEnter();
@@ -115,6 +107,12 @@ class Modal extends React.Component {
 
   render() {
     const props = this.props;
+
+    if (!this.props.titleText && !this.props.titleId) {
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
+    }
 
     let style = {};
     if (props.includeDefaultStyles) {
